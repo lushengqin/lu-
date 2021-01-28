@@ -41,7 +41,7 @@ function fn(e){
     console.log('fn2:'+n)
     // if(n<=arr.length){
     //     n+=1
-    // }
+    // } 
  }
 
 

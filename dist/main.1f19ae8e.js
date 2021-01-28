@@ -156,7 +156,7 @@ function fn2(e) {
   n += 1;
   console.log('fn2:' + n); // if(n<=arr.length){
   //     n+=1
-  // }
+  // } 
 } // div1.addEventListener('click',fn)
 // div2.addEventListener('click',fn)
 // div3.addEventListener('click',fn)
