@@ -68,16 +68,18 @@
 //     })
 // }
 
-
-
-setTimeout(() => {
+//递归判断 （难）
+setTimeout(()=>{
     const button = document.createElement('button')
-    button.textContent = '第三次试验'
+    const span = document.createElement('span')
+    span.textContent = '我是动态1000s后span里面的内容'
     box.appendChild(button)
-}, 1000);
+    button.appendChild(span)
+},1000)
+
 
 on('click','#box','button',()=>{
-    console.log('点击后执行的放这里')
+    console.log('button 被点击了')
 })
 
 function on(eventType,element,selector,fn){
@@ -85,11 +87,15 @@ function on(eventType,element,selector,fn){
         element = document.querySelector(element)
     }
     element.addEventListener(eventType,(e)=>{
-        const t = e.target
-        if(t.matches(selector)){
-            fn()
-            // console.log(fn(e))
-            // console.log(fn)
+        let t = e.target
+        while(!t.matches(selector)){
+            if(element === t){
+                t = null
+                break
+            }
+            t = t.parentNode
         }
+        t && fn.call(t,e,t)
     })
+    return element
 }

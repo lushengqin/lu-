@@ -175,13 +175,16 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 //         }
 //     })
 // }
+//递归判断 （难）
 setTimeout(function () {
   var button = document.createElement('button');
-  button.textContent = '第三次试验';
+  var span = document.createElement('span');
+  span.textContent = '我是动态1000s后span里面的内容';
   box.appendChild(button);
+  button.appendChild(span);
 }, 1000);
 on('click', '#box', 'button', function () {
-  console.log('点击后执行的放这里');
+  console.log('button 被点击了');
 });
 
 function on(eventType, element, selector, fn) {
@@ -192,11 +195,18 @@ function on(eventType, element, selector, fn) {
   element.addEventListener(eventType, function (e) {
     var t = e.target;
 
-    if (t.matches(selector)) {
-      fn(); // console.log(fn(e))
-      // console.log(fn)
+    while (!t.matches(selector)) {
+      if (element === t) {
+        t = null;
+        break;
+      }
+
+      t = t.parentNode;
     }
+
+    t && fn.call(t, e, t);
   });
+  return element;
 }
 },{}],"C:/Users/pc/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -226,7 +236,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3826" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3639" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
