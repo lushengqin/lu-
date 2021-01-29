@@ -1,20 +1,22 @@
-const div1 = document.querySelector('.div1')
-const div2 = document.querySelector('.div2')
-const div3 = document.querySelector('.div3')
-const div4 = document.querySelector('.div4')
-const div5 = document.querySelector('.div5')
-const div6 = document.querySelector('.div6')
-const div7 = document.querySelector('.div7')
-// console.log(div1,div2,div3,div4,div5,div6,div7)
+// const div1 = document.querySelector('.div1')
+// const div2 = document.querySelector('.div2')
+// const div3 = document.querySelector('.div3')
+// const div4 = document.querySelector('.div4')
+// const div5 = document.querySelector('.div5')
+// const div6 = document.querySelector('.div6')
+// const div7 = document.querySelector('.div7')
+// // console.log(div1,div2,div3,div4,div5,div6,div7)
 
 
 
 
-var arr = [div1,div2,div3,div4,div5,div6,div7]  //获取数组
+// var arr = [div1,div2,div3,div4,div5,div6,div7]  //获取数组
+
+const divArr = document.querySelectorAll('div')
 let n = 1 
-for(let i=0;i<arr.length;i++){
-    arr[i].addEventListener('click',fn2,true)
-    arr[i].addEventListener('click',fn)
+for(let i=0;i<divArr.length;i++){
+    divArr[i].addEventListener('click',fn2,true)
+    divArr[i].addEventListener('click',fn)
 }
 
 

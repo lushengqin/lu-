@@ -118,52 +118,86 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"main.js":[function(require,module,exports) {
-var div1 = document.querySelector('.div1');
-var div2 = document.querySelector('.div2');
-var div3 = document.querySelector('.div3');
-var div4 = document.querySelector('.div4');
-var div5 = document.querySelector('.div5');
-var div6 = document.querySelector('.div6');
-var div7 = document.querySelector('.div7'); // console.log(div1,div2,div3,div4,div5,div6,div7)
+// const button = document.querySelector('.button1')
+// console.log(button)
+// button.addEventListener('click',()=>{
+//     const event = new CustomEvent('lulu',{
+//         detail:{name:'frank',age:'18'},
+//         bubbles:true , //是否取消冒泡
+//         composed:false //是否阻止冒泡 不阻止
+//     })
+//     button.dispatchEvent(event)
+// })
+// div1.addEventListener('lulu',(e)=>{
+//     console.log(e.detail)
+// })
+// 100个buuton写法
+// box.addEventListener('click',(e)=>{
+//     const t = e.target
+//     // console.log(t)
+//     if(t.tagName.toLowerCase() === 'button'){
+//         console.log(222)
+//         // console.log('button被点击了，我的内容是：'+ t.textContent)
+//         console.log('button被点击了，我的内容是：data-id='+ t.dataset.id)
+//     }
+// })
+// 获取暂时不存在的元素
+// setTimeout(()=>{
+//     const button= document.createElement('button')
+//     button.textContent = '我是button内容'
+//     // console.log(button)
+//     box.appendChild(button)
+// },1000)
+// box.addEventListener('click',(e)=>{
+//     const t = e.target
+//     if(t.tagName.toLowerCase()==='button'){
+//         console.log('被点击')
+//     }
+// })
+// 封装一个函数
+// 1 写出这样一个函数on('click','#testDiv','li',fn) 2 当用户点击#testDiv里面的li远不时，调用fn函数  3 要求用到事件委托
+// setTimeout(()=>{
+//     const button = document.createElement('button')
+//     button.textContent = '我是动态1000s后button里面的内容'
+//     box.appendChild(button)
+// },1000)
+// on('click','#box','button',()=>{
+//     console.log('元素被点击了')
+// })
+// function on(eventType,element,selector,fn){
+//     if(!(element instanceof Element)){ //判断这个元素是不是一个元素 ！表示取反
+//         element = document.querySelector(element)
+//     }
+//     element.addEventListener(eventType,(e)=>{
+//         const t = e.target
+//         if(t.matches(selector)){ // 用来判断一个元素是否为选择器  比如一个元素是不是button 是不是div  是不是body html 等
+//             fn(e)
+//         }
+//     })
+// }
+setTimeout(function () {
+  var button = document.createElement('button');
+  button.textContent = '第三次试验';
+  box.appendChild(button);
+}, 1000);
+on('click', '#box', 'button', function () {
+  console.log('点击后执行的放这里');
+});
 
-var arr = [div1, div2, div3, div4, div5, div6, div7]; //获取数组
+function on(eventType, element, selector, fn) {
+  if (!(element instanceof Element)) {
+    element = document.querySelector(element);
+  }
 
-var n = 1;
+  element.addEventListener(eventType, function (e) {
+    var t = e.target;
 
-for (var i = 0; i < arr.length; i++) {
-  arr[i].addEventListener('click', fn2, true);
-  arr[i].addEventListener('click', fn);
+    if (t.matches(selector)) {
+      fn(); // console.log(fn(e))
+      // console.log(fn)
+    }
+  });
 }
-
-function fn(e) {
-  var t = e.currentTarget;
-  setTimeout(function () {
-    // console.log(e.currentTarget) //e.currentTarget只有在点击的瞬间才有
-    t.classList.add('x');
-  }, n * 500);
-  n += 1;
-  console.log('fn:' + n); // if(-n < arr.length){
-  //     n+=1
-  // }
-}
-
-function fn2(e) {
-  var t = e.currentTarget;
-  setTimeout(function () {
-    // console.log(e.currentTarget) //e.currentTarget只有在点击的瞬间才有
-    t.classList.remove('x');
-  }, n * 500);
-  n += 1;
-  console.log('fn2:' + n); // if(n<=arr.length){
-  //     n+=1
-  // } 
-} // div1.addEventListener('click',fn)
-// div2.addEventListener('click',fn)
-// div3.addEventListener('click',fn)
-// div4.addEventListener('click',fn)
-// div5.addEventListener('click',fn)
-// div6.addEventListener('click',fn)
-// div7.addEventListener('click',fn)
 },{}],"C:/Users/pc/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -192,7 +226,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3502" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3826" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
